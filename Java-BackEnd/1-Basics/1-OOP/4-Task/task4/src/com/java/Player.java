@@ -4,14 +4,14 @@ public class Player extends BaseEntity {
 
     //                - number length must be <=2       0 1     99
 
-    private int number;
+    private String number;
 
-    public int getNumber() {
+    public String getNumber() {
         return this.number;
     }
 
-    public void setNumber(int number) {
-        if (number > 0 && number < 100) {
+    public void setNumber(String number) {
+        if (number != null && number.length()<=2 ) {
             this.number = number;
         }
         else {

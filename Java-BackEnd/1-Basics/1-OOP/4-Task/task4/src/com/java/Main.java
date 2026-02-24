@@ -15,9 +15,9 @@ public class Main {
         String nameP;
         System.out.println(" - Enter Name Player : ");
         nameP = scanner.next();
-        int number;
+        String number;
         System.out.println(" - Enter Number Player : ");
-        number = scanner.nextInt();
+        number = scanner.next();
 
         long idS;
         System.out.println(" - Enter ID Student : ");
