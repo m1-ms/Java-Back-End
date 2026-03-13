@@ -1,0 +1,6 @@
+Please Build Models (Player - Shirt)  
+- ID Player
+- Name Player
+- Number T-Shirt
+- Color T-Shirt
+look    relationship
