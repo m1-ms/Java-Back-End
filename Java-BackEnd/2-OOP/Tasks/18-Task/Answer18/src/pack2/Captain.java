@@ -36,10 +36,12 @@ public class Captain {
         this.activeCaptain = activeCaptain;
     }
     public void printCaptainInfo(){
+        System.out.println(" ");
         System.out.println(" Captain Info : ");
         System.out.println(" - ID Captain : " + idCaptain);
         System.out.println(" - Name Captain : " + nameCaptain);
         System.out.println(" - Active Captain : " + activeCaptain);
         System.out.println(" ---------------------------------------------------------- ");
+        System.out.println(" ");
     }
 }

@@ -1,4 +1,4 @@
-/// JAVA BASICS
+package com.java; /// JAVA BASICS
 
 // here it's your maim                           to write comment /* */ || //
 
@@ -1007,3 +1007,4 @@ public class Main {
 }*/
 
 
+ // Java

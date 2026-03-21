@@ -21,14 +21,14 @@ public class Main {
         Captain captain = null;
         while (true) {
 
-            System.out.println("\n1- Add Player");
-            System.out.println("2- Add Captain");
-            System.out.println("0- Exit");
+            System.out.println(" 1- Add Player");
+            System.out.println(" 2- Add Captain");
+            System.out.println(" 0- Exit");
 
             int choice;
 
             while (!scanner.hasNextInt()) {
-                System.out.println("Invalid input! Enter number:");
+                System.out.println("Invalid! Enter number:");
                 scanner.next();
             }
             choice = scanner.nextInt();
@@ -36,16 +36,16 @@ public class Main {
 
             if (choice == 1) {
 
-                System.out.print("Enter Player ID: ");
+                System.out.print("Enter Player ID : ");
                 int idPlayer;
                 idPlayer = scanner.nextInt();
                 scanner.nextLine();
 
-                System.out.print("Enter Player Name: ");
+                System.out.print("Enter Player Name : ");
                 String namePlayer;
                 namePlayer = scanner.nextLine();
 
-                System.out.print("Enter Player Phone: ");
+                System.out.print("Enter Player Phone : ");
                 String phoneNumberPlayer;
                 phoneNumberPlayer = scanner.nextLine();
 
@@ -55,21 +55,21 @@ public class Main {
                 player.setNumberPlayer(phoneNumberPlayer);
                 player.printPlayerInfo();
 
-                System.out.println(" - Added Player:");
+                System.out.println(" - Added Player :");
                 System.out.println(player);
 
             } else if (choice == 2) {
 
-                System.out.print("Enter Captain ID: ");
+                System.out.print("Enter Captain ID : ");
                 int idCaptain;
                 idCaptain = scanner.nextInt();
                 scanner.nextLine();
 
-                System.out.print("Enter Captain Name: ");
+                System.out.print("Enter Captain Name : ");
                 String nameCaptain;
                 nameCaptain = scanner.nextLine();
 
-                System.out.print("Is Active (true/false): ");
+                System.out.print("Is Active (true/false) : ");
                 boolean activeCaptain;
                 activeCaptain = scanner.nextBoolean();
                 scanner.nextLine();
@@ -80,7 +80,7 @@ public class Main {
                 captain.setActiveCaptain(activeCaptain);
                 captain.printCaptainInfo();
 
-                System.out.println(" - Added Captain:");
+                System.out.println(" - Added Captain :");
                 System.out.println(captain);
 
             } else if (choice == 0) {
@@ -98,7 +98,7 @@ public class Main {
             }
         }
 
-        System.out.println(" === Final Data ===");
+        System.out.println(" ===> Final Data <===");
         player.printPlayerInfo();
         captain.printCaptainInfo();
     }

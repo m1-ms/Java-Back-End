@@ -46,10 +46,12 @@ public class Player {
         }
     }
     public void printPlayerInfo(){
+        System.out.println(" ");
         System.out.println(" Player Info : ");
         System.out.println(" - ID Player : " + idPlayer);
         System.out.println(" - Name Player : " + namePlayer);
         System.out.println(" - Phone Number Player : " + numberPlayer);
-        System.out.println(" -------------------------------------------------------- ");
+        System.out.println(" ---------------------------------------------------------- ");
+        System.out.println(" ");
     }
 }
