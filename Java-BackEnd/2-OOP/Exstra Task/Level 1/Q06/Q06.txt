@@ -1,0 +1,1 @@
+Create multiple objects from Student and store them in a list.

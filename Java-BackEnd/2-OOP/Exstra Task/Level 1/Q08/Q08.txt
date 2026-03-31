@@ -1,0 +1,1 @@
+Count how many objects are created using a static variable.
