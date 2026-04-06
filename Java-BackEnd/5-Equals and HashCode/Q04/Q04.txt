@@ -1,0 +1,12 @@
+🔵 Level 4: Real-world Scenarios
+Create a Product class (code, price)
+Define equality based on code only
+Store in HashSet
+Create a Student class (id, email)
+Define equality based on:
+case 1: id
+case 2: email
+Compare results in collections
+Create a Car class (plateNumber, color)
+Use it as a key in HashMap
+Simulate real system behavior
