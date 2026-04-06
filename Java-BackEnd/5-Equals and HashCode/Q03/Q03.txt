@@ -1,0 +1,11 @@
+🟠 Level 3: Working with HashMap
+Use Person as a key in a HashMap
+Store values like "Employee", "Manager"
+Insert two keys with same id
+Check if value is replaced or duplicated
+Retrieve value using a new object with same data
+Check if retrieval works or not
+Modify a key after inserting into HashMap
+Example: change name or id
+Try retrieving again
+👉 Observe the problem

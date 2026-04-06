@@ -1,12 +1,15 @@
 package com.java;
 
+import java.util.Objects;
+
 public class Person {
+    // id - name
     private int id;
     private String name;
 
     public Person(int id, String name) {
-        setId(id);
-        setName(name);
+        this.id = id;
+        this.name = name;
     }
 
     public int getId() {
@@ -21,7 +24,7 @@ public class Person {
         if (id > 0) {
             this.id = id;
         } else {
-            System.out.println(" - invalid ID.");
+            System.out.println(" - Invalid ID.");
         }
     }
 
@@ -29,26 +32,28 @@ public class Person {
         if (name != null && name.length() >= 3 && name.matches("[A-Za-z ]+")) {
             this.name = name;
         } else {
-            System.out.println(" - invalid Name.");
+            System.out.println(" - Invalid Name.");
         }
     }
 
     @Override
     public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-
+        if (this == object)
+            return true;
+        if (!(object instanceof Person))
+            return false;
         Person person = (Person) object;
-        return this.id == person.id && name.equals(person.name);
+        return id == person.id;
     }
 
     @Override
     public int hashCode() {
-        return Integer.hashCode(id);
+        return Objects.hash(id);
     }
 
+    // Print
     @Override
     public String toString() {
-        return "ID: " + id + ", Name: " + name;
+        return "Person : { ID = " + id + " , Name = " + name + " }";
     }
 }
