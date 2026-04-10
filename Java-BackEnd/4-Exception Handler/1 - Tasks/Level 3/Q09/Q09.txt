@@ -1,0 +1,2 @@
+Throws Keyword
+Create a method readFile() that throws IOException. Call it from main() using try-catch.

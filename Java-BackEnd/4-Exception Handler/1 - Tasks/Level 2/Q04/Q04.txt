@@ -1,0 +1,3 @@
+Access Array Element
+Create an array of 5 elements. Ask user to enter an index and print the value. 
+Handle ArrayIndexOutOfBoundsException.

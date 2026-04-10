@@ -1,0 +1,3 @@
+Read File
+Try to read a file from disk and handle FileNotFoundException. 
+(Use FileReader or Scanner)

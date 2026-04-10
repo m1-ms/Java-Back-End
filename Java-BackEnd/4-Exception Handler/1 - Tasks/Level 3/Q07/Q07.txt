@@ -1,0 +1,2 @@
+Create a Custom Exception
+Create a custom exception InvalidAgeException. If user age < 18, throw the exception.
