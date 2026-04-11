@@ -1,0 +1,8 @@
+[ - Explain Equals and HashCode ]
+
+Link Notion
+
+https://www.notion.so/Equals-and-HashCode-Java-33ef69065c8880eaaf72f231b267dd4d?source=copy_link
+
+
+{ > Please Copy and past in any search < }

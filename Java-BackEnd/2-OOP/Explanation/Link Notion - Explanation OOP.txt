@@ -1,1 +1,10 @@
+[ - Notion Explain ]
+
+> Old Link
+
 https://www.notion.so/Back-End-Java-OOP-316f69065c88801ab828cb8f283638ed?source=copy_link
+
+
+> New Link 
+
+https://www.notion.so/Back-End-Java-OOP-33ff69065c88806abdb8e6b2cadf1501?source=copy_link
