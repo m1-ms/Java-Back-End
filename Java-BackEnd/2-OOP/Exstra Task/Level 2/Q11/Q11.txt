@@ -1,0 +1,1 @@
+Make all class attributes private and access them using getters and setters.

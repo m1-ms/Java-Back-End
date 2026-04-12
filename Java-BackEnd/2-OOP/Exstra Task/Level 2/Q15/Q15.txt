@@ -1,0 +1,2 @@
+Prevent direct modification of account balance.
+
