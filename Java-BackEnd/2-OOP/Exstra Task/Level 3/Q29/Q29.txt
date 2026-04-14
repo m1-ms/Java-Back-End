@@ -1,0 +1,1 @@
+Use polymorphism with parent reference and child object.

@@ -1,0 +1,1 @@
+Prevent inheritance using the final keyword.
