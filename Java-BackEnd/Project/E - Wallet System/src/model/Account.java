@@ -42,7 +42,7 @@ public class Account {
     }
 
     public void setAge(int age) {
-        if (age >= 15 && age <= 100) {
+        if (age >= 18 && age <= 100) {
             this.age = age;
         } else {
             throw new InvalidAgeException(age);

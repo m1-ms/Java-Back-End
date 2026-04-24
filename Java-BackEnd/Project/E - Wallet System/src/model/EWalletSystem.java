@@ -25,9 +25,30 @@ public class EWalletSystem {
         accounts.add(account);
     }
 
+    // Find Account By UserName
     public Account findByUserName(String userName){
         for (Account account : accounts){
             if (account.getUserName().equals(userName)){
+                return account;
+            }
+        }
+        return null;
+    }
+
+    // Find Account By PhoneNumber
+    public Account findByPhone(String phoneNumber) {
+        for (Account account : accounts) {
+            if (account.getPhoneNumber().equals(phoneNumber)) {
+                return account;
+            }
+        }
+        return null;
+    }
+
+    // Find Account By Email
+    public Account findByEmail(String email){
+        for (Account account : accounts){
+            if (account.getEmail().equals(email)){
                 return account;
             }
         }

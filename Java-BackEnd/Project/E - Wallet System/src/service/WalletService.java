@@ -3,7 +3,6 @@ package service;
 import exception.InvalidBalanceException;
 import model.Account;
 import model.EWalletSystem;
-
 import exception.*;
 
 public class WalletService {
@@ -16,61 +15,63 @@ public class WalletService {
 
     // Deposit
     public void deposit(String userName, double amount) {
-        Account account = walletSystem.findByUserName(userName);
 
+        // Check if Account exist
+        Account account = walletSystem.findByUserName(userName);
         if (account == null) {
             throw new AccountException(" User not Found : " + userName);
         }
+        // Check Balance
         if (amount <= 0) {
-            throw new AccountException(" Amount must be greater than 0.");
+            throw new AccountException(" Invalid Amount - [ Balance must be bigger than 0. ] ");
         }
-
+        // Update
         account.setBalance(account.getBalance() + amount);
-        System.out.println("Deposit successful! New Balance : " + account.getBalance());
+        System.out.println(" Deposit successful! New Balance : " + account.getBalance());
 
     }
 
     // Withdraw
     public void withdraw(String userName, double amount) {
 
+        // Check if Account exist
         Account account = walletSystem.findByUserName(userName);
-
         if (account == null) {
-            throw new AccountException("User not Found : " + userName);
+            throw new AccountException(" User not Found : " + userName);
         }
-
+        // Check Balance
         if (amount <= 0) {
-            throw new AccountException("Amount must be greater than 0.");
+            throw new AccountException(" Invalid Amount - [ Balance must be bigger than 0. ] ");
         }
-
         if (account.getBalance() < amount) {
             throw new InvalidBalanceException(account.getBalance());
         }
-
+        // Update
         account.setBalance(account.getBalance() - amount);
-        System.out.println("Withdraw successful! New Balance : " + account.getBalance());
+        System.out.println(" Withdraw successful! New Balance : " + account.getBalance());
     }
 
     // Transfer
     public void transfer(String fromUserName, String toUserName, double amount) {
 
+        // No Transfer yourself
         if (fromUserName.equals(toUserName)) {
-            throw new AccountException("Cannot transfer to yourself!");
+            throw new AccountException(" Can't Transfer to yourself!");
         }
 
+        // Check Account yourself
+        // UserName from and to
         Account from = walletSystem.findByUserName(fromUserName);
         Account to = walletSystem.findByUserName(toUserName);
 
         if (from == null) {
-            throw new AccountException("Sender not Found : " + fromUserName);
+            throw new AccountException(" - Sender not Found : " + fromUserName);
         }
-
         if (to == null) {
-            throw new AccountException("Receiver not Found : " + toUserName);
+            throw new AccountException(" - Receiver not Found : " + toUserName);
         }
-
         if (amount <= 0) {
-            throw new AccountException("Amount must be greater than 0.");
+            throw new AccountException(" Invalid Amount - [ Balance must be bigger than 0. ] ");
         }
 
         if (from.getBalance() < amount) {
@@ -80,7 +81,7 @@ public class WalletService {
         from.setBalance(from.getBalance() - amount);
         to.setBalance(to.getBalance() + amount);
 
-        System.out.println("Transfer successful!");
+        System.out.println(" Transfer successful!");
         System.out.println(fromUserName + " new Balance : " + from.getBalance());
         System.out.println(toUserName + " new Balance : " + to.getBalance());
     }
