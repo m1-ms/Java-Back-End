@@ -42,10 +42,11 @@ public class Solution {
 
 
     // Answer Task 4
-    public int getProductWithReduce() {
+    public long getProductWithReduce() {
         return numbers.stream()
                 .filter(n -> n != 0)
-                .reduce(1, (a, b) -> a * b);
+                .mapToLong(Integer::longValue)
+                .reduce(1L, (a, b) -> a * b);
     }
 
 
