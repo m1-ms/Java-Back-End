@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class EWalletApplicationServiceImpl implements ApplicationService {
 
     private EWalletSystem wallet = new EWalletSystem();
-    private AccountService accountService = new AccountService(wallet);
+    private AccountService accountService = new AccountServiceImpl(wallet);
     private WalletService walletService = new WalletService(wallet);
     // Input Element
     private Scanner scanner = new Scanner(System.in);
