@@ -3,6 +3,7 @@ package service.impl;
 import exception.*;
 import model.Account;
 import model.EWalletSystem;
+import model.Transaction;
 import service.AccountService;
 import service.ApplicationService;
 import service.WalletService;
@@ -12,7 +13,7 @@ public class EWalletApplicationServiceImpl implements ApplicationService {
 
     private EWalletSystem wallet = new EWalletSystem();
     private AccountService accountService = new AccountServiceImpl(wallet);
-    private WalletService walletService = new WalletService(wallet);
+    private WalletService walletService = new WalletServiceImpl(wallet);
     // Input Element
     private Scanner scanner = new Scanner(System.in);
 
@@ -137,6 +138,7 @@ public class EWalletApplicationServiceImpl implements ApplicationService {
             System.out.println(" [ 3 ] - Transfer");
             System.out.println(" [ 4 ] - Account Details");
             System.out.println(" [ 5 ] - Change Password");
+            System.out.println(" [ 6 ] - Transaction History");
             System.out.println(" [ 0 ] - LogOut");
             System.out.print(" Enter your Choice : ");
 
@@ -149,6 +151,7 @@ public class EWalletApplicationServiceImpl implements ApplicationService {
                 case 3 -> transfer(account);
                 case 4 -> showDetails(account);
                 case 5 -> changePassword(account);
+                case 6 -> showTransactionHistory(account);
                 case 0 -> {
                     System.out.println(" Logged Out! ");
                     System.out.println(" Good Bye! ");
@@ -229,6 +232,25 @@ public class EWalletApplicationServiceImpl implements ApplicationService {
             System.out.println(" Error : " + accountException.getMessage());
         }
     }
+
+    // Transaction History
+    private void showTransactionHistory(Account account) {
+        System.out.println(" --- || Account Transaction History || --- ");
+        // Updated Account
+        Account updated = wallet.findByUserName(account.getUserName());
+
+        if (updated.getTransactions().isEmpty()) {
+            System.out.println(" No transactions yet.");
+            return;
+        }
+
+        int index = 1;
+        for (Transaction t : updated.getTransactions()) {
+            System.out.println(" [ " + index + " ] " + t);
+            index++;
+        }
+    }
+
 
     // Show Details
     private void showDetails(Account account) {

@@ -1,6 +1,8 @@
 package model;
 
 import exception.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Account {
 
@@ -107,5 +109,14 @@ public class Account {
         } else {
             throw new InvalidBalanceException(balance);
         }
+    }
+
+    // Transaction History
+    private List<Transaction> transactions = new ArrayList<>();
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+    public void addTransaction(Transaction transaction) {
+        transactions.add(transaction);
     }
 }
