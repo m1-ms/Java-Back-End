@@ -50,6 +50,11 @@ public class AccountServiceImpl implements AccountService {
             throw new AccountException(" User not Found : " + userName);
         }
 
+        // Check If Account is Active
+        if (!account.inActive()) {
+            throw new AccountException(" Account is Inactive!");
+        }
+
         // Check Password
         if (!account.getPassword().equals(password)) {
             throw new AccountException(" Wrong password!");
@@ -77,5 +82,45 @@ public class AccountServiceImpl implements AccountService {
         // Update Password
         account.setPassword(newPassword);
         System.out.println(" - Password Changed Successfully!");
+    }
+
+    @Override
+    public void deleteAccount(String userName, String password) {
+
+        // Check Account Exist
+        Account account = walletSystem.findByUserName(userName);
+        if (account == null){
+            throw new AccountException(" User not Found : " + userName);
+        }
+
+        // Check Password Account User
+        if (!account.getPassword().equals(password)){
+            throw new AccountException(" Wrong Password , Please Try Again. ");
+        }
+
+        // Delete Account
+        walletSystem.deleteAccount(account);
+        System.out.println("  Account Deleted Successfully!  ");
+
+    }
+
+    @Override
+    public void inActive(String userName, String password) {
+
+        // Check Account Exist
+        Account account = walletSystem.findByUserName(userName);
+        if (account == null) {
+            throw new AccountException(" User not Found : " + userName);
+        }
+
+        // Check Password
+        if (!account.getPassword().equals(password)) {
+            throw new AccountException(" Wrong Password!");
+        }
+
+        // inActive Account
+        account.setActive(false);
+        System.out.println(" Account inActivated Successfully!");
+
     }
 }

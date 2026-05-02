@@ -13,4 +13,10 @@ public interface AccountService {
 
     // Change Account Password
     public void changePassword(Account account, String oldPassword, String newPassword);
+
+    // Delete Account
+    public void deleteAccount(String userName , String password);
+
+    // inActive Account
+    public void inActive(String userName , String password);
 }

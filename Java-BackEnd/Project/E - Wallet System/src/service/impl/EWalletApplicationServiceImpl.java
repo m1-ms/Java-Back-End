@@ -14,8 +14,7 @@ public class EWalletApplicationServiceImpl implements ApplicationService {
     private EWalletSystem wallet = new EWalletSystem();
     private AccountService accountService = new AccountServiceImpl(wallet);
     private WalletService walletService = new WalletServiceImpl(wallet);
-    // Input Element
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);       // Input Element [Scanner]
 
 
     // StartApp
@@ -64,6 +63,9 @@ public class EWalletApplicationServiceImpl implements ApplicationService {
     // Register Data
     private void register() {
         System.out.println(" -- || Register || -- ");
+        int attempt = 0;
+
+        while (attempt<3){
         System.out.print(" - Name : ");
         String name = scanner.nextLine();
         System.out.print(" - UserName : ");
@@ -82,15 +84,22 @@ public class EWalletApplicationServiceImpl implements ApplicationService {
         if (name.isBlank() || userName.isBlank() || password.isBlank()
                 || phone.isBlank() || email.isBlank()) {
             System.out.println(" All fields are required!");
-            return;
+            attempt++;
+            continue;
         }
 
         try {
             accountService.register(name, userName, password, phone, email, age);
+            return;
         } catch (AccountException accountException) {
+            attempt++;
             System.out.println(" - Error : " + accountException.getMessage());
+            System.out.println(" Attempts Left : " + (3 - attempt));
         }
     }
+    System.out.println(" Too many Failed Attempts!");
+    System.out.println(" Returning to Main Menu...");
+}
 
     // Login
     private void login() {
@@ -111,7 +120,11 @@ public class EWalletApplicationServiceImpl implements ApplicationService {
 
             try {
                 Account account = accountService.login(userName, password);
-                showMenu(account);
+                if (account.isAdmin()){
+                    showAdminMenu(account);
+                } else {
+                    showMenu(account);
+                }
                 return;
             } catch (AccountException accountExcept) {
                 attempts++;
@@ -124,6 +137,48 @@ public class EWalletApplicationServiceImpl implements ApplicationService {
         System.out.println(" Please try Again Later.");
     }
 
+    // View All Accounts
+    private void viewAllAccounts() {
+        System.out.println(" --- || All Accounts || --- ");
+
+        int index = 1;
+        for (Account account : wallet.getAccounts()) {
+            System.out.println(" [ " + index + " ]");
+            System.out.println(" - Name     : " + account.getName());
+            System.out.println(" - Username : " + account.getUserName());
+            System.out.println(" - Phone    : " + account.getPhoneNumber());
+            System.out.println(" - Email    : " + account.getEmail());
+            System.out.println(" - Balance  : " + account.getBalance());
+            System.out.println(" - Admin    : " + account.isAdmin());
+            System.out.println(" ------------------------------------------------ ");
+            index++;
+        }
+    }
+
+    // Admin Menu User
+    private void showAdminMenu(Account account){
+        boolean loggedIn = true;
+        while (loggedIn){
+            System.out.println(" --- || Admin DashBoard || --- ");
+            System.out.println(" [ 1 ] - View All Accounts");
+            System.out.println(" [ 2 ] - My Account Balance");
+            System.out.println(" [ 0 ] - LogOut");
+            System.out.print(" Enter your Choice : ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice){
+                case 1 -> viewAllAccounts();
+                case 2 -> showMenu(account);
+                case 0 -> {
+                    System.out.println(" Logged Out!");
+                    loggedIn = false;
+                }
+                default -> System.out.println(" Invalid Your Choice. ");
+            }
+        }
+    }
+
     // UserMenu
     private void showMenu(Account account) {
 
@@ -131,14 +186,16 @@ public class EWalletApplicationServiceImpl implements ApplicationService {
         boolean loggedIn = true;
 
         while (loggedIn) {
-            System.out.println(" --- || " + account.getName() + " || ---");
+            System.out.println(" --- || " + account.getName() + " Account " + " || ---");
             System.out.println(" Balance : " + account.getBalance());
             System.out.println(" [ 1 ] - Deposit");
             System.out.println(" [ 2 ] - Withdraw");
             System.out.println(" [ 3 ] - Transfer");
             System.out.println(" [ 4 ] - Account Details");
             System.out.println(" [ 5 ] - Change Password");
-            System.out.println(" [ 6 ] - Transaction History");
+            System.out.println(" [ 6 ] - Transaction History");  // Bonus
+            System.out.println(" [ 7 ] - Delete Account");       // Bonus
+            System.out.println(" [ 8 ] - InActive Account");     // Bonus
             System.out.println(" [ 0 ] - LogOut");
             System.out.print(" Enter your Choice : ");
 
@@ -152,6 +209,8 @@ public class EWalletApplicationServiceImpl implements ApplicationService {
                 case 4 -> showDetails(account);
                 case 5 -> changePassword(account);
                 case 6 -> showTransactionHistory(account);
+                case 7 -> { if (deleteAccount(account)) loggedIn = false; }
+                case 8 -> { if (inactiveAccount(account)) loggedIn = false; }
                 case 0 -> {
                     System.out.println(" Logged Out! ");
                     System.out.println(" Good Bye! ");
@@ -175,9 +234,14 @@ public class EWalletApplicationServiceImpl implements ApplicationService {
     // Deposit
     private void deposit(Account account) {
         System.out.println(" -- || Deposit || -- ");
-        System.out.print(" Amount : ");
+        System.out.print(" Amount (0 to Back) : ");
         double amount = scanner.nextDouble();
         scanner.nextLine();
+
+        if (amount == 0) {
+            System.out.println(" Going Back...");
+            return;
+        }
 
         try {
             walletService.deposit(account.getUserName(), amount);
@@ -189,9 +253,14 @@ public class EWalletApplicationServiceImpl implements ApplicationService {
     // WithDraw
     private void withdraw(Account account) {
         System.out.println(" -- || WithDraw || -- ");
-        System.out.print(" Amount : ");
+        System.out.print(" Amount (0 to Back) : ");
         double amount = scanner.nextDouble();
         scanner.nextLine();
+
+        if (amount == 0) {
+            System.out.println(" Going Back...");
+            return;
+        }
 
         try {
             walletService.withdraw(account.getUserName(), amount);
@@ -203,8 +272,14 @@ public class EWalletApplicationServiceImpl implements ApplicationService {
     // Transfer
     private void transfer(Account account) {
         System.out.println(" -- || Transfer || -- ");
-        System.out.print(" To UserName : ");
+        System.out.print(" To UserName (0 to Back) : ");
         String toUser = scanner.nextLine();
+
+        if (toUser.equals("0")) {
+            System.out.println(" Going Back...");
+            return;
+        }
+
         System.out.print(" Amount : ");
         double amount = scanner.nextDouble();
         scanner.nextLine();
@@ -251,6 +326,38 @@ public class EWalletApplicationServiceImpl implements ApplicationService {
         }
     }
 
+    // Delete Account
+    private boolean deleteAccount(Account account){
+        System.out.println(" -- || Delete Account || -- ");
+        System.out.print(" - Enter Password to Confirm : ");
+        String password = scanner.nextLine();
+
+        try {
+            accountService.deleteAccount(account.getUserName(),password);
+            System.out.println(" ....... Logging Out , Bye ");
+            return true;
+        } catch (AccountException accountException) {
+            System.out.println(" " + accountException.getMessage());
+            return false;
+        }
+    }
+
+    // Inactive Account
+    private boolean inactiveAccount(Account account) {
+        System.out.println(" -- || Inactive Account || -- ");
+        System.out.print(" - Enter Password to Confirm : ");
+        String password = scanner.nextLine();
+
+        try {
+            accountService.inActive(account.getUserName(), password);
+            // logout after inActive
+            System.out.println(" ...... Logging out...");
+            return true;
+        } catch (AccountException accountException) {
+            System.out.println(" " + accountException.getMessage());
+            return false;
+        }
+    }
 
     // Show Details
     private void showDetails(Account account) {

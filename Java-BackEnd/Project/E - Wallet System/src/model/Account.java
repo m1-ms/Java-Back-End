@@ -13,6 +13,8 @@ public class Account {
     private String email;
     private int age;
     private double balance;
+    private boolean isAdmin;  // new bones
+    private boolean inActive;  // new bones
 
     public Account(String name, String userName, String password, String phoneNumber, String email, int age) {
         setName(name);
@@ -22,6 +24,8 @@ public class Account {
         setEmail(email);
         setAge(age);
         this.balance = 0;
+        this.isAdmin = false;
+        this.inActive = true;
     }
 
 
@@ -109,6 +113,30 @@ public class Account {
         } else {
             throw new InvalidBalanceException(balance);
         }
+    }
+
+    // isAdmin
+    // new Constructor for isAdmin
+    public Account(String name, String userName, String password, String phoneNumber, String email, int age, boolean isAdmin) {
+        this(name, userName, password, phoneNumber, email, age);
+        this.isAdmin = isAdmin;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
+    // inActive
+    public boolean inActive() {
+        return inActive;
+    }
+
+    public void setActive(boolean active) {
+        inActive = active;
     }
 
     // Transaction History

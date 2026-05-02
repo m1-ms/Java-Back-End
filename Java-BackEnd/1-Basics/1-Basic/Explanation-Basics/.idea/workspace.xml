@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="584542c8-eaf1-41da-9802-e9a1f48e819d" name="Changes" comment="" />
+    <list default="true" id="584542c8-eaf1-41da-9802-e9a1f48e819d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Project/E - Wallet System/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Project/E - Wallet System/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Project/E - Wallet System/src/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Project/E - Wallet System/src/model/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Project/E - Wallet System/src/model/EWalletSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Project/E - Wallet System/src/model/EWalletSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Project/E - Wallet System/src/service/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Project/E - Wallet System/src/service/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Project/E - Wallet System/src/service/impl/AccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Project/E - Wallet System/src/service/impl/AccountServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Project/E - Wallet System/src/service/impl/EWalletApplicationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Project/E - Wallet System/src/service/impl/EWalletApplicationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Try Project ll/E-Wallet System/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Try Project ll/E-Wallet System/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Try Project ll/E-Wallet System/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Try Project ll/E-Wallet System/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Try Project ll/E-Wallet System/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Try Project ll/E-Wallet System/E-Wallet System.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Try Project ll/E-Wallet System/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Try Project ll/E-Wallet System/src/model/Account.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Try Project ll/E-Wallet System/src/model/EWalletSystem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Try Project ll/E-Wallet System/src/service/AccountService.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,6 +78,7 @@
       <workItem from="1774720194116" duration="3468000" />
       <workItem from="1775829961386" duration="17667000" />
       <workItem from="1776787131262" duration="1619000" />
+      <workItem from="1777725069161" duration="1634000" />
     </task>
     <servers />
   </component>

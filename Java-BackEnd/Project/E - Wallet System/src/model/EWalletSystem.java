@@ -25,6 +25,12 @@ public class EWalletSystem {
         accounts.add(account);
     }
 
+    // Auto Account Admin User Data
+    public EWalletSystem(){
+        Account adminMain = new Account("Mahmoud Sliman","mahmoud_24","Mahmoud#@080","01026167100","mahmoud080@gmail.com",22,true);
+        accounts.add(adminMain);
+    }
+
     // Find Account By UserName
     public Account findByUserName(String userName){
         for (Account account : accounts){
@@ -53,5 +59,10 @@ public class EWalletSystem {
             }
         }
         return null;
+    }
+
+    // Delete Account   [ Remove = Delete ]
+    public void deleteAccount(Account account){
+        accounts.remove(account);
     }
 }
